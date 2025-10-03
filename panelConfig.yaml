@@ -1,254 +1,208 @@
-# Grafana flow panel config derived from the provided SVG topology.
-id: 1
-title: PVE-Cluster Replication & Backup
-type: flow
-datasource: null
-gridPos:
-  h: 30
-  w: 24
-  x: 0
-  y: 0
-fieldConfig:
-  defaults: {}
-  overrides: []
-options:
-  layout: manual
-  background: '#ffffff'
-  zoom: 100
-  nodes:
-    - id: cluster-wrapper
-      title: PVE-Cluster
-      subtitle: Replication & Backup
-      x: 0
-      y: 0
-      size:
-        width: 1230
-        height: 810
-      shape: roundedRect
-      zIndex: 0
-      style:
-        fillColor: '#994c00'
-        textColor: '#000000'
-        borderColor: '#374151'
-        borderWidth: 1
-        cornerRadius: 122
-        fontSize: 19
-        fontWeight: bold
-    - id: pve0
-      title: pve0
-      x: 128
-      y: 130
-      size:
-        width: 270
-        height: 210
-      shape: roundedRect
-      zIndex: 1
-      mainStat: 'CPU: --%'
-      secondaryStat: 'RAM: Total --%'
-      description: |
-        ZFS pool pve0: Total -- GiB
-        ZFS pool pve0: Free -- GiB
-      style:
-        fillColor: '#333333'
-        textColor: '#ffffff'
-        borderColor: '#374151'
-        borderWidth: 1
-        cornerRadius: 32
-    - id: pve1
-      title: pve1
-      x: 488
-      y: 130
-      size:
-        width: 270
-        height: 210
-      shape: roundedRect
-      zIndex: 1
-      mainStat: 'CPU: --%'
-      secondaryStat: 'RAM: Total --%'
-      description: |
-        ZFS pool pve1: Total -- GiB
-        ZFS pool pve1: Free -- GiB
-      style:
-        fillColor: '#333333'
-        textColor: '#ffffff'
-        borderColor: '#374151'
-        borderWidth: 1
-        cornerRadius: 32
-    - id: pve2
-      title: pve2
-      x: 838
-      y: 130
-      size:
-        width: 270
-        height: 210
-      shape: roundedRect
-      zIndex: 1
-      mainStat: 'CPU: --%'
-      secondaryStat: 'RAM: Total --%'
-      description: |
-        ZFS pool pve2: Total -- GiB
-        ZFS pool pve2: Free -- GiB
-      style:
-        fillColor: '#333333'
-        textColor: '#ffffff'
-        borderColor: '#374151'
-        borderWidth: 1
-        cornerRadius: 32
-    - id: ms-mn-c1
-      title: ms-mn-c1.ssc
-      x: 128
-      y: 420
-      size:
-        width: 270
-        height: 210
-      shape: roundedRect
-      zIndex: 1
-      mainStat: 'CPU: --%'
-      secondaryStat: 'RAM: Total --%'
-      description: |
-        ms-mn-c1 storage: Total -- GiB
-        ms-mn-c1 storage: Free -- GiB
-      style:
-        fillColor: '#0050ef'
-        textColor: '#ffffff'
-        borderColor: '#001dbc'
-        borderWidth: 1
-        cornerRadius: 32
-    - id: c3-doalnet
-      title: c3.doalnet.ru
-      x: 488
-      y: 420
-      size:
-        width: 270
-        height: 210
-      shape: roundedRect
-      zIndex: 1
-      mainStat: 'CPU: --%'
-      secondaryStat: 'RAM: Total --%'
-      description: |
-        c3.doalnet.ru storage: Total -- GiB
-        c3.doalnet.ru storage: Free -- GiB
-      style:
-        fillColor: '#0050ef'
-        textColor: '#ffffff'
-        borderColor: '#001dbc'
-        borderWidth: 1
-        cornerRadius: 32
-    - id: taxcom
-      title: taxcom.doalnet.ru
-      x: 838
-      y: 410
-      size:
-        width: 270
-        height: 210
-      shape: roundedRect
-      zIndex: 1
-      mainStat: 'CPU: --%'
-      secondaryStat: 'RAM: Total --%'
-      description: |
-        taxcom.doalnet.ru storage: Total -- GiB
-        taxcom.doalnet.ru storage: Free -- GiB
-      style:
-        fillColor: '#0050ef'
-        textColor: '#ffffff'
-        borderColor: '#001dbc'
-        borderWidth: 1
-        cornerRadius: 32
-    - id: veeam
-      title: Veeam Backup & Replication
-      x: 475
-      y: 950
-      size:
-        width: 280
-        height: 120
-      shape: roundedRect
-      zIndex: 1
-      mainStat: 'Status: --'
-      style:
-        fillColor: '#006600'
-        textColor: '#ffffff'
-        borderColor: '#374151'
-        borderWidth: 1
-        cornerRadius: 18
-  edges:
-    - id: e-pve0-to-pve1
-      source: pve0
-      target: pve1
-      mainText: Replication
-      arrow: forward
-      style:
-        color: '#00ff00'
-        width: 3
-    - id: e-pve1-to-pve0
-      source: pve1
-      target: pve0
-      mainText: Replication
-      arrow: forward
-      style:
-        color: '#00ff00'
-        width: 3
-    - id: e-pve1-to-pve2
-      source: pve1
-      target: pve2
-      mainText: Replication
-      arrow: forward
-      style:
-        color: '#00ff00'
-        width: 3
-    - id: e-pve2-to-pve1
-      source: pve2
-      target: pve1
-      mainText: Replication
-      arrow: forward
-      style:
-        color: '#00ff00'
-        width: 3
-    - id: e-pve0-to-pve2
-      source: pve0
-      target: pve2
-      mainText: Replication
-      arrow: forward
-      style:
-        color: '#00ff00'
-        width: 3
-    - id: e-pve2-to-pve0
-      source: pve2
-      target: pve0
-      mainText: Replication
-      arrow: forward
-      style:
-        color: '#00ff00'
-        width: 3
-    - id: e-pve0-to-ms
-      source: pve0
-      target: ms-mn-c1
-      mainText: VM
-      arrow: none
-      style:
-        color: '#000000'
-        width: 1
-    - id: e-pve1-to-c3
-      source: pve1
-      target: c3-doalnet
-      mainText: VM
-      arrow: none
-      style:
-        color: '#000000'
-        width: 1
-    - id: e-pve2-to-taxcom
-      source: pve2
-      target: taxcom
-      mainText: VM
-      arrow: none
-      style:
-        color: '#000000'
-        width: 1
-    - id: e-cluster-to-veeam
-      source: cluster-wrapper
-      target: veeam
-      mainText: Backup
-      arrow: forward
-      style:
-        color: '#000000'
-        width: 2
-targets: []
+---
+
+# Конфигурация панели Flow, построенная в формате из официального репозитория.
+# Якоря ниже позволяют переиспользовать одинаковые наборы порогов для всех узлов.
+anchorThresholds:
+  - thresholds: &util_percent
+      - {color: "semi-dark-green", level: 0}
+      - {color: "orange", level: 70}
+      - {color: "red", level: 90}
+
+cellIdPreamble: ""
+gradientMode: "hue"
+
+cells:
+  # --- PVE cluster узлы ---
+  pve0_cpu:
+    dataRef: "pve0_cpu"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  pve0_mem:
+    dataRef: "pve0_mem"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-4:
+    dataRef: "pve0_zfs_total"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+  4imd3VvK-_OE2TMO21Rd-5:
+    dataRef: "pve0_zfs_free"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+
+  4imd3VvK-_OE2TMO21Rd-7:
+    dataRef: "pve1_cpu"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-8:
+    dataRef: "pve1_mem"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-9:
+    dataRef: "pve1_zfs_total"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+  4imd3VvK-_OE2TMO21Rd-10:
+    dataRef: "pve1_zfs_free"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+
+  4imd3VvK-_OE2TMO21Rd-12:
+    dataRef: "pve2_cpu"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-13:
+    dataRef: "pve2_mem"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-14:
+    dataRef: "pve2_zfs_total"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+  4imd3VvK-_OE2TMO21Rd-15:
+    dataRef: "pve2_zfs_free"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+
+  # --- Виртуальные машины ---
+  4imd3VvK-_OE2TMO21Rd-17:
+    dataRef: "ms_mn_c1_cpu"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-18:
+    dataRef: "ms_mn_c1_mem"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-19:
+    dataRef: "ms_mn_c1_storage_total"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+  4imd3VvK-_OE2TMO21Rd-25:
+    dataRef: "ms_mn_c1_storage_free"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+
+  4imd3VvK-_OE2TMO21Rd-28:
+    dataRef: "c3_cpu"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-29:
+    dataRef: "c3_mem"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-30:
+    dataRef: "c3_storage_total"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+  4imd3VvK-_OE2TMO21Rd-31:
+    dataRef: "c3_storage_free"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+
+  4imd3VvK-_OE2TMO21Rd-33:
+    dataRef: "taxcom_cpu"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-34:
+    dataRef: "taxcom_mem"
+    label:
+      separator: "colon"
+      units: "percent(0-100)"
+      decimalPoints: 1
+    labelColor:
+      thresholds: *util_percent
+  4imd3VvK-_OE2TMO21Rd-35:
+    dataRef: "taxcom_storage_total"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+  4imd3VvK-_OE2TMO21Rd-36:
+    dataRef: "taxcom_storage_free"
+    label:
+      separator: "colon"
+      units: "none"
+      unitsPostfix: " GiB"
+      decimalPoints: 1
+
+  # --- Veeam ---
+  veeam_status:
+    dataRef: "veeam_status"
+    label:
+      separator: "colon"
+      units: "string"
