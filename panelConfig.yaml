@@ -18,7 +18,7 @@ cells:
     label:
       separator: "colon"
       units: "percent(0-100)"
-      decimalPoints: 1
+      decimalPoints: 0
     labelColor:
       thresholds: *util_percent
   pve0_mem:
