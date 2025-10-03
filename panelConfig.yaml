@@ -8,7 +8,7 @@ anchorThresholds:
       - {color: "orange", level: 70}
       - {color: "red", level: 90}
 
-cellIdPreamble: ""
+cellIdPreamble: "cell-"
 gradientMode: "hue"
 
 cells:
